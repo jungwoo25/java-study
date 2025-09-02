@@ -1,0 +1,34 @@
+<script>
+
+    /*
+        [문제]
+            아래 주민번호를 가진 사람의 
+            나이와 성별을 구하시오.
+        [정답]
+            40세
+            남성    
+    */
+
+    let jumin = "850430-1012940";
+
+    let old = Number(jumin.substring(0,2));
+    let gender = Number(jumin.substring(7,8));
+
+    
+
+   
+    if(gender == 1 || gender == 2){
+        old = 1900 + old;
+    }else if(gender == 3 || gender == 4){
+        old = 2000 + old;
+    }
+
+    old = 2025 - old;
+    document.write(old + "세 <br>");
+
+    if(gender == 1 || gender == 3){
+        document.write("남성");
+    }else if(gender == 2 || gender == 4){
+        document.write("여성");
+    }
+</script>

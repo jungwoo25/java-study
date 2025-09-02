@@ -1,0 +1,36 @@
+<script> 
+   
+    /*
+        [문제]
+            lotto배열이 당첨인지 꽝인지 체크하는 함수를 만드시오.
+            단, 7이 연속으로 3개이면 당첨이다.
+        [정답]
+            당첨
+    */
+   
+    let lotto = [1, 7, 7, 1, 7, 7, 7];  
+    
+    function check(lotto){
+        let count = 0;
+        let check = false;
+        for(let i = 0; i < lotto.length; i++){
+            if(lotto[i] == 7){
+                count += 1;
+                if(count == 3){
+                    check = true;
+                    break;
+                }
+            }else{
+                count = 0;
+            }
+        }
+
+        if(check){
+            document.write("당첨");
+        }else{
+            document.write("꽝");
+        }
+    }
+
+    check(lotto);
+</script>

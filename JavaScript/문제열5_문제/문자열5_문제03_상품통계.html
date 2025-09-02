@@ -1,0 +1,69 @@
+<script>
+
+    /*
+        [문제]
+            memberList는 회원목록데이터이다.
+            number는 회원 번호이다. 
+            id는 회원아이디이다.
+
+            itemList은 쇼핑몰 판매상품데이터이다.
+            itemName는 상품이름이다.
+            price는 아이템 가격이다.
+            
+            orderList는 오늘 주문 목록이다. 
+            orderid는 주문한 회원 id 이다.
+            itemname는 주문한 상품이름이다. 
+            count는 주문한 상품개수이다. 
+            
+            각 아이템별로 구입한 회원이름과 개수를 구하시오.
+            단, 주문 목록에 없는 아이템은 구하지않는다. 
+        [정답]
+            {"itemname":"고래밥","name":"이만수","count":1}
+            {"itemname":"고래밥","name":"김철민","count":1}
+            {"itemname":"새우깡","name":"이만수","count":1}
+            {"itemname":"새우깡","name":"김철민","count":1}
+            {"itemname":"새우깡","name":"이영희","count":3}
+            {"itemname":"감자깡","name":"이만수","count":1}
+            {"itemname":"감자깡","name":"이영희","count":1}
+            {"itemname":"칸쵸","name":"이영희","count":1}
+            {"itemname":"빼빼로","name":"이만수","count":1}
+            {"itemname":"빼빼로","name":"박민재","count":1}
+            {"itemname":"고구마깡","name":"이만수","count":1}
+            {"itemname":"고구마깡","name":"김철민","count":2}
+    */
+
+    let memberList = [
+        {"membernumber" : 3001, "name" : "이만수"},
+        {"membernumber" : 3002, "name" : "김철민"},
+        {"membernumber" : 3003, "name" : "이영희"},
+        {"membernumber" : 3004, "name" : "조성아"},
+        {"membernumber" : 3005, "name" : "박민재"}
+    ];
+    let itemList = [
+        {"itemnumber" : 100001, "itemname" : "고래밥"},
+        {"itemnumber" : 100002, "itemname" : "새우깡"},
+        {"itemnumber" : 100003, "itemname" : "감자깡"},
+        {"itemnumber" : 100004, "itemname" : "칸쵸"},
+        {"itemnumber" : 100005, "itemname" : "오징어땅콩"},
+        {"itemnumber" : 100006, "itemname" : "빼빼로"},
+        {"itemnumber" : 100007, "itemname" : "고구마깡"}
+    ];
+    let orderList = [
+        {"membernumber" : 3001, "itemnumber" : 100001},
+        {"membernumber" : 3001, "itemnumber" : 100002},
+        {"membernumber" : 3003, "itemnumber" : 100004},
+        {"membernumber" : 3002, "itemnumber" : 100007},
+        {"membernumber" : 3003, "itemnumber" : 100003},
+        {"membernumber" : 3005, "itemnumber" : 100006},
+        {"membernumber" : 3002, "itemnumber" : 100002},
+        {"membernumber" : 3001, "itemnumber" : 100007},
+        {"membernumber" : 3003, "itemnumber" : 100002},
+        {"membernumber" : 3002, "itemnumber" : 100001},
+        {"membernumber" : 3001, "itemnumber" : 100003},
+        {"membernumber" : 3003, "itemnumber" : 100002},
+        {"membernumber" : 3002, "itemnumber" : 100007},
+        {"membernumber" : 3001, "itemnumber" : 100006},
+        {"membernumber" : 3003, "itemnumber" : 100002}
+    ];
+
+</script>

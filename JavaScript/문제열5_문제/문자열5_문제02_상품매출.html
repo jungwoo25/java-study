@@ -1,0 +1,71 @@
+<script>
+
+    /*
+        [문제]
+            memberList는 회원 목록 데이터이다.
+            number는 회원 번호이다. 
+            id는 회원아이디이다.
+
+            itemList은 쇼핑몰 판매 상품 데이터이다.
+            itemName는 상품 이름이다.
+            price는 아이템 가격이다.
+            
+            orderList는 오늘 주문 목록이다. 
+            orderid는 주문한 회원 id 이다.
+            itemname은 주문한 상품이름이다. 
+            count는 주문한 상품개수이다. 
+
+            각 회원별 주문 총액을 구하시오.
+        [정답]
+            {'id': 'qwer1234', 'total': 4400}
+            {'id': 'pythongood', 'total': 28000}
+            {'id': 'testid', 'total': 16000}  
+    */
+
+    let memberList = [
+        {"number" : 1001, "id" : "qwer1234" },
+        {"number" : 1002, "id" : "pythongood"},
+        {"number" : 1003, "id" : "testid"}
+    ];
+    let itemList = [
+        {"itemname" : "사과",   "price" : 1100},
+        {"itemname" : "바나나", "price" : 2000},
+        {"itemname" : "딸기",   "price" : 4300}
+    ];
+    let orderList = [
+        {"orderid" : "qwer1234",    "itemname" : "사과",    "count" : 3},
+        {"orderid" : "pythongood",  "itemname" : "딸기",    "count" : 6},
+        {"orderid" : "testid",      "itemname" : "바나나",  "count" : 1},
+        {"orderid" : "pythongood",  "itemname" : "사과",    "count" : 2},
+        {"orderid" : "testid",      "itemname" : "바나나",  "count" : 7},
+        {"orderid" : "qwer1234",    "itemname" : "사과",    "count" : 1}
+    ];
+
+    let result = [];
+    for(let i = 0; i < memberList.length; i++){
+        let info ={};
+        info["id"] = memberList[i]["id"];
+
+        let total = 0;
+        for(let j = 0; j < orderList.length; j++){
+            if(memberList[i]["id"] == orderList[j]["orderid"]){
+                for(let k = 0; k < itemList.length; k++){
+                    if(orderList[j]["itemname"] == itemList[k]["itemname"]){
+                        total += orderList[j]["count"] * itemList[k]["price"];
+                    }
+                }
+            }
+
+        }
+        info["total"] = total;
+        result.push(info);
+    }
+    for(let i = 0; i < result.length; i++){
+        let keys = Object.keys(result[i]);
+
+        for(let j = 0; j < keys.length; j++){
+            document.write(result[i][keys[j]] + " ");
+        }
+        document.write("<br>");
+    }
+</script>

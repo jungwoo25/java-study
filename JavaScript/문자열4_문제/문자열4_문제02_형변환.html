@@ -1,0 +1,31 @@
+<script>
+
+    /*
+        [문제]
+            text는 학생점수를 기록한 데이터이다.
+            전체 평균과 일등의 점수를 출력하시오.
+        [정답]
+            평균 = 30.2
+            일등 점수 = 80
+    */
+
+    let str = "13,32,80,3,23";
+
+    let temp = str.split(",");
+
+    let total = 0;
+    let first = 0;
+    for(let i = 0; i < temp.length; i++){
+        let score = Number(temp[i]);
+        total += score;
+        if(score > first){
+            first = score;
+        }
+    }
+
+    let avg = total / temp.length;
+
+    document.write("평균 = " + avg + "<br>");
+    document.write("일등 점수 = " + first);
+
+</script>
