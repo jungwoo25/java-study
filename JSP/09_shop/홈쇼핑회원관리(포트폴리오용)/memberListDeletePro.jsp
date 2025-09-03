@@ -13,7 +13,7 @@
 	<%request.setCharacterEncoding("UTF-8"); %>
 	
 	<%
-		int custno = Integer.parseInt(request.getParameter("index"));
+		int custno = Integer.parseInt(request.getParameter("custno"));
 	
 		try{
 			String url = "jdbc:oracle:thin:@localhost:1521:xe";
