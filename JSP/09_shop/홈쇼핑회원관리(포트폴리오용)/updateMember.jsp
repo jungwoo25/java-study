@@ -11,9 +11,27 @@
 <title>Insert title here</title>
 <script>
 	function checkValue(){
+		let formData = document.formData;
 		
-		alert("수정이 완료되었습니다.");
-		document.formData.submit();
+		if(!formData.custname.value){
+			alert("회원성명이 입력되지 않았습니다.");
+			formData.custname.focus();
+		}else if(!formData.phone.value){
+			alert("회원전화가 입력되지 않았습니다.");
+			formData.phone.focus();
+		}else if(!formData.joindate.value){
+			alert("가입일자가 입력되지 않았습니다.");
+			formData.joindate.focus();
+		}else if(!formData.grade.value){
+			alert("고객등급이 입력되지 않았습니다.");
+			formData.grade.focus();
+		}else if(!formData.city.value){
+			alert("도시코드가 입력되지 않았습니다.");
+			formData.city.focus();
+		}else{
+			alert("수정이 완료되었습니다.");
+			formData.submit();
+		}
 	}
 </script>
 </head>
