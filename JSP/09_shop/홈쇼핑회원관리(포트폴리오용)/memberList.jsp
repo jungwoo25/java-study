@@ -79,7 +79,7 @@
 	<jsp:include page="nav.jsp" />
 	
 	<div align="center">
-		<h1>회원목록조회/수정</h1>
+		<h1>회원목록조회/수정/삭제</h1>
 		<table border="1">
 			<tr>
 				<th>회원번호</th>
@@ -89,6 +89,7 @@
 				<th>가입일자</th>
 				<th>고객등급</th>
 				<th>거주지역</th>
+				<th>삭제</th>
 			</tr>
 		<%for(int i = 0; i < list.size(); i++){ %>
 			<tr align="center">
@@ -101,6 +102,7 @@
 				<td><%=list.get(i)[4] %></td>
 				<td><%=list.get(i)[5] %></td>
 				<td><%=list.get(i)[6] %></td>
+				<td><button onclick="window.location.href='memberListDeletePro.jsp?custno=<%=list.get(i)[0]%>'">삭제</button></td>
 			</tr>
 		<%} %>
 		</table>

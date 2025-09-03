@@ -70,7 +70,7 @@
 	
 	<div align="center">
 		<h1>홈쇼핑 회원 등록</h1>
-		<form name="formData" action="insetMemberPro.jsp" method="post" onsubmit="return false;">
+		<form name="formData" action="insertMemberPro.jsp" method="post" onsubmit="return false;">
 			<table border="1">
 				<tr>
 					<th>회원번호(자동발생)</th>
