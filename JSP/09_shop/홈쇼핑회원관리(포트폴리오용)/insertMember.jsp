@@ -110,7 +110,7 @@
 				<tr>
 					<td colspan="2" align="center">
 						<button onclick="checkValue()">등록</button>
-						<button onclick="window.location.href='#'">조회</button>
+						<button onclick="window.location.href='memberList.jsp'">조회</button>
 					</td>
 				</tr>
 			</table>
