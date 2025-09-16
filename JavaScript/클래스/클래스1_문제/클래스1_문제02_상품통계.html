@@ -1,0 +1,92 @@
+<script>
+
+    /*
+        [문제] 
+            member는 회원목록이다.
+            item은 쇼핑몰 판매상품이다.
+            order는 오늘 주문목록이다.
+            회원별 아이템 주문개수를 출력하시오.
+
+            Member, Item, Order 클래스를 만들고,
+            문자열을 잘라 각각의 클래스에 저장 후 문제를 푸시오.
+        [정답]
+            이만수: 고래밥 3
+            김철민: 고래밥 1 칸쵸 1
+            이영희: 새우깡 2 칸쵸 1    
+    */
+    class Member{
+        memberId = "";
+        name = "";
+    }
+
+    class Item{
+        itemId = "";
+        item = "";
+    }
+
+    class Order{
+        memberId = "";
+        itemId = "";
+    }
+    let member  = "3001/이만수,3002/김철민,3003/이영희";
+    let item    = "1001/고래밥,1002/새우깡,1003/칸쵸";
+    let order   = "3001,1001/3001,1001/3003,1002/3002,1003/3001,1001/3003,1002/3003,1003/3002,1001";
+
+    let memberList = [];
+    let itemList = [];
+    let orderList = [];
+
+    let token = member.split(",");
+    for(let i = 0; i < token.length; i++){
+        let temp = token[i].split("/");
+
+        let memberTemp = new Member();
+        memberTemp.memberId = temp[0];
+        memberTemp.name = temp[1];
+
+        memberList.push(memberTemp);
+    }
+
+    token = item.split(",");
+    for(let i = 0; i < token.length; i++){
+        let temp = token[i].split("/");
+
+        let itemTemp = new Item();
+        itemTemp.itemId = temp[0];
+        itemTemp.item = temp[1];
+
+        itemList.push(itemTemp);
+    }
+    token = order.split("/");
+    for(let i = 0; i < token.length; i++){
+        let temp = token[i].split(",");
+
+        let orderTemp = new Order();
+        orderTemp.memberId = temp[0];
+        orderTemp.itemId = temp[1]
+
+        orderList.push(orderTemp);
+    }
+
+    for(let i = 0; i < memberList.length; i++){
+        document.write(memberList[i].name + " : ");
+        for(let j = 0; j < itemList.length; j++){
+            let count = 0; 
+
+            for(let k = 0; k < orderList.length; k++){
+                if(memberList[i].memberId == orderList[k].memberId){
+                    if(itemList[j].itemId == orderList[k].itemId){
+                        count += 1;
+                    }
+                }
+            }
+
+            if(0 < count){
+                document.write(itemList[j].item + " " + count + " ");
+            }
+        }
+        document.write("<br>");
+
+        
+    }
+</script>

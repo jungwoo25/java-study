@@ -1,0 +1,42 @@
+<script>
+
+    /*
+        [문제]
+            아래 strTest 배열을 검사해서 
+            숫자가 있는 값을 찾아주는
+            함수를 만드시오.
+        [정답]
+            qwer1234dasd, 1234
+    */
+
+    function NumberCheck(str){
+        let str0 = "1234567890";
+        let check = false;
+
+        for(let i = 0; i < str.length; i++){
+            for(let j = 0; j < str0.length; j++){
+                if(str[i] == str0[j]){
+                    check = true;
+                    break;
+                }
+            }
+        }
+        return check;
+    }
+
+    function getNumber(str){
+        let arr = [];
+        for(let i = 0; i < str.length; i++){
+            if(NumberCheck(str[i])){
+                arr.push(str[i]);
+            }
+        }
+
+        return arr;
+    }
+    let strTest = ["qwer1234dasd", "dasdasd", "1234"];
+
+    let arr = getNumber(strTest);
+    document.write(arr);
+
+  </script>

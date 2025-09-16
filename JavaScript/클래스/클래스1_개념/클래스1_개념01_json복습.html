@@ -1,0 +1,126 @@
+<script>
+      
+    /*
+        [문제1] 
+            data1과 data2를 파싱하여 아래와 같이 jsonList에 json형태로 저장하시오.
+            data1은 json의 key 이다.
+            data2는 json의 value 이다. 
+        [정답1]
+            jsonList = [
+                {"num" : 1001, "name" : "김철수", "kor" : 100, "math" : 20},
+                {"num" : 1002, "name" : "이영수", "kor" :  90, "math" : 40},
+                {"num" : 1003, "name" : "오민수", "kor" :  20, "math" : 50}
+            ]
+ 
+        [문제2]
+            1등 학생의 이름을 출력하시오.
+        [정답2]
+            이영수
+
+        [문제3]
+            새로운 학생의 정보를 추가하시오.
+        [정답3]
+            1001 김철수 100 20
+            1002 이영수 90 40
+            1003 오민수 20 50
+            1004 신민아 90 89
+
+        [문제4]
+            평균 60점 이하의 학생 정보를 삭제하시오.
+        [정답4]
+            1002 이영수 90 40
+            1004 신민아 90 89
+    */
+
+    function parseData(data1, data2){
+        let jsonList = [];
+
+        let keys1 = data1.split("/");
+        let keys2 = data2.split(",");
+        for(let i = 0; i < keys2.length; i++){
+            let unit = {};
+            let temp = keys2[i].split("/");
+            for(let j = 0; j < temp.length; j++){
+                unit[keys1[j]] = temp[j];
+            }
+            jsonList.push(unit);
+        }
+        return jsonList;
+    }
+    
+    function printData(data){
+        
+        for(let i = 0; i < data.length; i++){
+            let keys = Object.keys(data[i]);
+            for(let j = 0; j < keys.length; j++){
+                document.write(data[i][keys[j]] + " ");
+            }
+            document.write("<br>");
+        }
+    }
+
+    function firstStudent(data){
+        let max = 0;
+        let index = 0;
+        
+        for(let i = 0; i < data.length; i++){
+            let total = Number(data[i]["kor"]) + Number(data[i]["math"]);
+            if(total > max){
+                max = total;
+                index = i;
+            }
+        }
+
+        document.write(data[index]["name"] + "<br>");
+    }
+    
+    function addStudent(data1, add, result){
+        let temp1 = data1.split("/");
+        let temp2 = add.split("/");
+        let unit = {};
+        for(let i = 0; i < temp1.length; i++){
+            unit[temp1[i]] = temp2[i];
+        }
+        result.push(unit);
+
+        return result;
+    }
+    
+    function deleteStudent(data){
+        for(let i = 0; i < data.length; i++){
+            let total = Number(data[i]["kor"]) + Number(data[i]["math"]);
+            let avg = total / 2;
+            if(avg <= 60){
+                data.splice(i, 1);
+                i -= 1;
+            }
+        }
+        return data;
+    }
+    let data1 = "num/name/kor/math";
+    let data2 = "1001/김철수/100/20,1002/이영수/90/40,1003/오민수/20/50";
+
+    // 새로운 학생정보
+    let add = "1004/신민아/90/89";
+
+    // 문제1)
+    let result = parseData(data1, data2);
+    document.write("[문제1]<br>");
+    printData(result);
+    
+    // 문제2)
+    document.write("[문제2]<br>");
+    firstStudent(result);
+
+    // 문제3)
+    addStudent(data1, add, result);
+    document.write("[문제3]<br>");
+    printData(result);
+
+    // 문제4)
+    
+    deleteStudent(result);
+    document.write("[문제4]<br>");
+    printData(result);
+
+</script>

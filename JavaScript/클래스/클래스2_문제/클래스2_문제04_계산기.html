@@ -1,0 +1,45 @@
+<script>
+
+    /*
+        [문제]
+            간단한 계산기 프로그램을 구현해보시오.
+        [정답]
+            5 + 3 = 8
+            5 - 3 = 2
+            5 * 3 = 15
+            5 / 3 = 1.67
+    */
+
+    class Calc {
+
+      sum(x, y){
+        let result = x + y;
+        document.write(x + " + " + y + " = " + result + "<br>");
+      }
+
+      sub(x, y){
+        let result = x - y;
+        document.write(x + " - " + y + " = " + result + "<br>");
+      }
+
+      mul(x, y){
+        let result = x * y;
+        document.write(x + " * " + y + " = " + result + "<br>");
+      }
+
+      div(x, y){
+        let result = (x / y).toFixed(2);
+        document.write(x + " / " + y + " = " + result + "<br>");
+      }
+    }
+
+    //-------------------------------------------
+
+    let c = new Calc();
+    
+    c.sum(5, 6);
+    c.sub(8, 3);
+    c.mul(2, 8);
+    c.div(10, 2);
+
+</script>

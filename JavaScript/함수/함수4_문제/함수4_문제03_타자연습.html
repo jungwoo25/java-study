@@ -1,0 +1,62 @@
+<script>
+
+    /*
+        [문제]
+            철수는 타자연습 게임을 만들기 위해 단어들을 선정했다. 
+            문제를 단순히 내면 재미없기 때문에 두 글자는 단어대신 * 로 출력하려고 한다. 
+            * 위치는 랜덤이고, 별은 반드시 두개가 되도록 각 단어들을 만들어서 
+            새로운 배열에 저장 후 출력하시오.
+        [예시]
+            h*m*
+            *eac*
+            spr**ng
+            fr*nt*nd
+            java*cr*pt
+    */
+
+    function textR(text){
+        let indexArr = [];
+        while(true){
+            let r = Math.floor(Math.random() * text.length);
+            if(indexArr.length == 2){
+                break;
+            }else{
+                let check = true;
+                for(let i = 0; i < indexArr.length; i++){
+                    if(indexArr[i] == r){
+                        check = false;
+                        break;
+                    }
+                }
+
+                if(check){
+                    indexArr.push(r);
+                }
+            }
+        }
+
+        return indexArr;
+    }
+
+    function textGame(text){
+        let result = [];
+        for(let i = 0; i < text.length; i++){
+            let textIndex = textR(text[i]);
+            let token = "";
+            for(let j = 0; j < text[i].length; j++){
+                    if(j == textIndex[0] || j == textIndex[1]){
+                        token += "*";
+                    }else{
+                        token += text[i][j];
+                    }
+                
+            }
+            result.push(token);
+        }
+        return result;
+    }
+    let wordTest = ["html", "react", "spring", "frontend", "javascript"];
+
+    let game = textGame(wordTest);
+    document.write(game);
+  </script>

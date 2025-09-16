@@ -1,0 +1,109 @@
+<script>
+
+    /*
+        [문제]
+            member는 회원목록이다.
+            item은 쇼핑몰 판매상품이다.
+            price는 아이템 가격이다.
+            
+            order는 오늘 주문 목록이다. 
+            cancel은 주문취소 목록이다.
+            오늘의 매출을 출력하시오.
+
+            Member, Item, Order, Cancel 클래스를 만들고,
+            문자열을 잘라 각각의 클래스에 저장 후 문제를 푸시오.
+        [정답]
+            7700    
+    */
+    class Member{
+        id = "";
+    }
+
+    class Item{
+        item = "";
+        price = 0;
+    }
+
+    class Order{
+        id = "";
+        item = "";
+        count = 0;
+    }
+
+    class Cancel{
+        id = "";
+        item = "";
+        count = 0;
+    }
+
+    
+    let member = "qwer1234,pythongood,testid";
+    let item   = "사과,1100/바나나,2000/딸기,4300";
+    let order  = "qwer1234,사과,3/phthongood,바나나,2/qwer1234,딸기,5/testid,사과,4";
+    let cancel = "qwer1234,딸기,5/phthongood,바나나,2";
+
+    let memberList = [];
+    let itemList = [];
+    let orderList = [];
+    let cancelList = [];
+
+    let token = member.split(",");
+    for(let i = 0; i < token.length; i++){
+        let memberTemp = new Member();
+        memberTemp.id = token[i];
+        memberList.push(memberTemp);
+    }
+
+    token = item.split("/");
+    for(let i = 0; i < token.length; i++){
+        let temp = token[i].split(",");
+        let itemTemp = new Item;
+        itemTemp.item = temp[0];
+        itemTemp.price = Number(temp[1]);
+
+        itemList.push(itemTemp);
+        
+    }
+
+    token = order.split("/");
+    for(let i = 0; i < token.length; i++){
+        let temp = token[i].split(",");
+        let orderTemp = new Order();
+        orderTemp.id = temp[0];
+        orderTemp.item = temp[1];
+        orderTemp.count = Number(temp[2]);
+
+        orderList.push(orderTemp);
+    }
+
+     token = cancel.split("/");
+    for(let i = 0; i < token.length; i++){
+        let temp = token[i].split(",");
+        let cancelTemp = new Cancel();
+        cancelTemp.id = temp[0];
+        cancelTemp.item = temp[1];
+        cancelTemp.count = Number(temp[2]);
+
+        cancelList.push(cancelTemp);
+    }
+
+    // 주문 목록
+    let total = 0;
+    for(let i = 0; i < orderList.length; i++){
+        for(let j = 0; j <itemList.length; j++){
+            if(orderList[i].item == itemList[j].item){
+                total += orderList[i].count * itemList[j].price;
+            }
+        }
+    }
+
+    //취소 목록
+    for(let i = 0; i < cancelList.length; i++){
+        for(let j = 0; j < itemList.length; j++){
+            if(cancelList[i].item == itemList[j].item){
+                total -= cancelList[i].count * itemList[j].price;
+            }
+        }
+    }
+    document.write(total);
+</script>

@@ -1,0 +1,48 @@
+<script>
+
+	/*
+		[문제] 
+			arr1배열과 arr2배열을 매개변수로 받아서 
+			서로 겹치지않는 값만 배열로 만들어서 
+			반환해주는 함수를 만드시오.
+		[정답]
+			32,33,65,21,2,4,5
+	*/
+
+	let arr1 = [12, 32, 33, 43, 65];
+	let arr2 = [21, 12, 43, 2, 4, 5];
+
+    function cha(arr1,arr2){
+        let arr = [];
+        for(let i = 0; i < arr1.length; i++){
+            let check = true;
+            for(let j = 0; j < arr2.length; j++){
+                if(arr1[i] == arr2[j]){
+                    check = false;
+                    break;
+                }
+            }
+            if(check){
+                arr.push(arr1[i]);
+            }
+        }
+
+        for(let i = 0; i < arr2.length; i++){
+            let check = true;
+            for(let j = 0; j < arr1.length; j++){
+                if(arr2[i] == arr1[j]){
+                    check = false;
+                    break;
+                }
+            }
+            if(check){
+                arr.push(arr2[i]);
+            }
+        }
+
+        return arr;
+    }
+
+    let arr = cha(arr1,arr2);
+    document.write(arr);
+</script>
