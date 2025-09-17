@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+    
+    <script>
+
+        /*
+            [문제] 
+                Script만 추출하여 출력하시오.
+            [정답]
+                Script
+        */
+
+        let text = "Hello, JavaScript!";
+
+        let index = text.indexOf("Script");
+
+        if(index != -1){
+            let result = text.substring(index, text.length - 1);
+            document.write(result);
+        }else{
+            document.write(false);
+        }
+
+    </script>
+    
+</body>
+</html>
